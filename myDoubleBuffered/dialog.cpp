@@ -46,7 +46,7 @@ void Dialog::paintEvent(QPaintEvent *)
        //将以前pix中的内容复制到tempPix中，保证以前的内容不消失
        tempPix = pix;
        QPainter pp(&tempPix);
-//       pp.drawRect(x, y, w, h);
+       pp.drawRect(x, y, w, h);
        painter.drawPixmap(0, 0, tempPix);
     }
     else
