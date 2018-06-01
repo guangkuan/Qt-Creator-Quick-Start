@@ -25,8 +25,8 @@ int main(int argc,char* argv[ ])
     // 显示视图
     view->show();
 
-    qDebug() << item->shape();   //输出item的shape信息
-    qDebug() << item->boundingRect();  //输出item的boundingRect信息
+    qDebug() << "shape的参数：" << item->shape();   //输出item的shape信息
+    qDebug() << "boundingRect的参数：" << item->boundingRect();  //输出item的boundingRect信息
 
     return app.exec();
 }
