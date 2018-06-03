@@ -1,14 +1,13 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "connection.h"
-#include "mysqlquerymodel.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
     if(!createConnection())
-           return 1;
+        return 1;
 
     MainWindow w;
     w.show();

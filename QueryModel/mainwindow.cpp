@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQueryModel *model = new QSqlQueryModel(this);
     model->setQuery("select * from student");
     model->setHeaderData(0, Qt::Horizontal, tr("id"));
     model->setHeaderData(1, Qt::Horizontal, tr("name"));
@@ -51,9 +51,9 @@ void MainWindow::on_pushButton_2_clicked()
     view->setModel(model);
 
     QSqlQuery query = model->query();
-//    query.exec("select name from student where id = 2 ");
-//    query.next();
-//    qDebug() << query.value(0).toString();
+    query.exec("select id from student where id = 1 ");
+    query.next();
+    qDebug() << "ID:" <<query.value(0).toInt();
     query.exec("insert into student values (10, 'yafei10')");
     model->setQuery("select * from student"); //再次查询整张表
     view->show(); //再次进行显示
@@ -68,7 +68,6 @@ void MainWindow::on_pushButton_3_clicked()
     myModel->setHeaderData(0, Qt::Horizontal, tr("id"));
     myModel->setHeaderData(1, Qt::Horizontal, tr("name"));
     QTableView *view = new QTableView;
-//    view->setEditTriggers(QAbstractItemView::AllEditTriggers);
     view->setWindowTitle("mySqlQueryModel"); //修改窗口标题
     view->setModel(myModel);
     view->show();
