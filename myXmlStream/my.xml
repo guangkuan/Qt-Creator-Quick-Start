@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+   <book id="01">
+       <title>The Poisonwood Bible</title>
+       <author>Barbara Kingsolver</author>
+   </book>
+   <book id="02">
+       <title>Storia di chi fugge e di chi resta</title>
+       <author>Elena Ferrante</author>
+   </book>
+</library>
