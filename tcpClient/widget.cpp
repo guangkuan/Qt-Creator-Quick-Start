@@ -8,9 +8,8 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
 
     tcpSocket = new QTcpSocket(this);
-    connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(readMessage()));
-    connect(tcpSocket,SIGNAL(error(QAbstractSocket::SocketError)),
-             this,SLOT(displayError(QAbstractSocket::SocketError)));
+    connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readMessage()));
+    connect(tcpSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(displayError(QAbstractSocket::SocketError)));
 }
 
 Widget::~Widget()
@@ -24,8 +23,7 @@ void Widget::newConnect()
     tcpSocket->abort(); //取消已有的连接
 
     //连接到主机，这里从界面获取主机地址和端口号
-    tcpSocket->connectToHost(ui->hostLineEdit->text(),
-                             ui->portLineEdit->text().toInt());
+    tcpSocket->connectToHost(ui->hostLineEdit->text(), ui->portLineEdit->text().toInt());
 }
 
 void Widget::readMessage()
@@ -37,10 +35,12 @@ void Widget::readMessage()
     {
        //判断接收的数据是否有两字节，也就是文件的大小信息
        //如果有则保存到blockSize变量中，没有则返回，继续接收数据
-       if(tcpSocket->bytesAvailable() < (int)sizeof(quint16)) return;
+       if(tcpSocket->bytesAvailable() < (int)sizeof(quint16))
+           return;
        in >> blockSize;
     }
-    if(tcpSocket->bytesAvailable() < blockSize) return;
+    if(tcpSocket->bytesAvailable() < blockSize)
+        return;
     //如果没有得到全部的数据，则返回，继续接收数据
     in >> message;
     //将接收到的数据存放到变量中

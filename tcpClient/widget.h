@@ -20,7 +20,6 @@ private slots:
     void newConnect(); //连接服务器
     void readMessage();  //接收数据
     void displayError(QAbstractSocket::SocketError);  //显示错误
-
     void on_pushButton_clicked();
 
 private:

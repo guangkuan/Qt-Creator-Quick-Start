@@ -28,15 +28,15 @@ void Widget::sendMessage()
     QByteArray block;
 
     //使用数据流写入数据
-    QDataStream out(&block,QIODevice::WriteOnly);
+    QDataStream out(&block, QIODevice::WriteOnly);
 
     //设置数据流的版本，客户端和服务器端使用的版本要相同
     out.setVersion(QDataStream::Qt_5_11);
 
-    out<<(quint16) 0;
-    out<<tr("hello Tcp!!!");
+    out << (quint16) 0;
+    out << tr("hello Tcp!!!");
     out.device()->seek(0);
-    out<<(quint16) (block.size() - sizeof(quint16));
+    out << (quint16) (block.size() - sizeof(quint16));
 
     //我们获取已经建立的连接的子套接字
     QTcpSocket *clientConnection = tcpServer->nextPendingConnection();
